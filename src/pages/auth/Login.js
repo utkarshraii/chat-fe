@@ -9,7 +9,7 @@ const Login = () => {
     <>
       <Stack spacing={2} sx={{ mb: 5, position: "relative" }}>
         <Typography sx={{ mb: 3, textAlign: "center" }} variant="h4">
-          Login To Your CALChat Account
+          Login To Your Chat Account
         </Typography>
 
         {/* Login Form */}
