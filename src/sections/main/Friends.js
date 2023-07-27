@@ -63,7 +63,7 @@ const FriendsList = ({ handleClose }) => {
 
   return (
     <>
-      {friends.map((el, idx) => {
+      {friends?.map((el, idx) => {
         return <FriendElement key={idx} {...el} handleClose={handleClose} />;
       })}
     </>
@@ -81,7 +81,7 @@ const RequestsList = () => {
 
   return (
     <>
-      {friendRequests.map((el, idx) => {
+      {friendRequests?.map((el, idx) => {
         return <FriendRequestElement key={idx} {...el.sender} id={el._id} />;
       })}
     </>
