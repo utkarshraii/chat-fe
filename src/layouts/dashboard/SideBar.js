@@ -61,7 +61,7 @@ const SideBar = () => {
             <img
               src={Logo}
               style={{ borderRadius: "10px" }}
-              alt={"CALChat Logo"}
+              alt={"Chat Logo"}
             />
           </Box>
           <Stack

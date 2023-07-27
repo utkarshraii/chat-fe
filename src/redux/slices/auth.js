@@ -88,7 +88,7 @@ export function LoginUser(formValues) {
         );
         // console.log(error);
         // dispatch(showSnackbar({ severity: "error", message: error.message }));
-        toast.error(error.response.data.message);
+        toast.error(error?.response?.data?.message);
       });
   };
 }

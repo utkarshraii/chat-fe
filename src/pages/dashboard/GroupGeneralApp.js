@@ -2,7 +2,7 @@ import { Box, Stack, Typography } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import React from "react";
 import Contact from "../../components/Contact";
-import SignupImg from "../../assets/Images/logo-black.png";
+import SignupImg from "../../assets/Images/logo.ico";
 
 import { useSelector } from "react-redux";
 import SharedMessages from "../../components/SharedMessages";
