@@ -30,7 +30,7 @@ const Conversation = ({ isMobile, menu }) => {
 
   useEffect(() => {
     const setCC = async () => {
-      const current = await conversations.find((el) => el.id === room_id);
+      const current = await conversations.find((el) => el?.id === room_id);
 
       socket.emit("get_messages", { conversation_id: current?.id }, (data) => {
         // data => list of messages
