@@ -163,7 +163,6 @@ const DashboardLayout = () => {
       });
 
       socket.on("start_chat", (data) => {
-        console.log(data);
         // add / update to conversation list
         const existing_conversation = conversations.find(
           (el) => el.id === data._id
@@ -180,7 +179,6 @@ const DashboardLayout = () => {
       });
 
       socket.on("start_group_chat", (data) => {
-        console.log(data);
         // add / update to conversation list
         const existing_conversation = group_conversations.find(
           (el) => el.id === data._id
@@ -232,7 +230,7 @@ const DashboardLayout = () => {
 
   return (
     <>
-      <Stack direction="row" width={"auto"}>
+      <Stack minHeight={"100vh"} direction="row" width={"auto"}>
         {/* {isDesktop && ( */}
         {/* // SideBar */}
         <SideNav />

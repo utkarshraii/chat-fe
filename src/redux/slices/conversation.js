@@ -19,8 +19,6 @@ const initialState = {
 const FormatDate = (date) => {
   const postDate = new Date(date);
 
-  console.log(postDate.getDate());
-
   const currentDate = new Date();
 
   const timeDiff = Math.abs(currentDate.getTime() - postDate.getTime());
@@ -70,12 +68,13 @@ const slice = createSlice({
           lastMessage?.created_at ? lastMessage.created_at : Date.now()
         );
         return {
-          id: el._id,
-          user_id: user._id,
+          id: el?._id,
+          user_id: user?._id,
           //   name: `${user.firstName} ${user.lastName}`,
-          name: user.name,
-          online: user.status,
-          img: faker.image.avatar(),
+          name: user?.name,
+          online: user?.status,
+          status: user?.status,
+          photo: user?.photo,
           msg: lastMessage?.text,
           time: `${time}`,
           unread: 0,
@@ -97,12 +96,13 @@ const slice = createSlice({
               (elm) => elm._id.toString() !== user_id
             );
             return {
-              id: this_conversation._id._id,
-              user_id: user._id,
-              name: user.name,
+              id: this_conversation?._id,
+              user_id: user?._id,
+              name: user?.name,
               //   name: `${user.firstName} ${user.lastName}`,
-              online: user.status === "Online",
-              img: faker.image.avatar(),
+              online: user?.status === "Online",
+              status: user?.status,
+              photo: user?.photo,
               msg: faker.music.songName(),
               time: "9:00",
               unread: 0,
@@ -122,12 +122,13 @@ const slice = createSlice({
         (el) => el.id !== this_conversation._id
       );
       state.direct_chat.conversations.push({
-        id: this_conversation._id._id,
-        user_id: user._id,
+        id: this_conversation?._id,
+        user_id: user?._id,
         // name: `${user.firstName} ${user.lastName}`,
-        name: user.name,
-        online: user.status === "Online",
-        img: faker.image.avatar(),
+        name: user?.name,
+        online: user?.status === "Online",
+        status: user?.status,
+        photo: user?.photo,
         msg: faker.music.songName(),
         time: "9:00",
         unread: 0,
@@ -179,8 +180,6 @@ const slice = createSlice({
       });
 
       state.group_chat.group_conversations = list;
-
-      console.log("List", list);
     },
 
     addDirectGroupConversation(state, action) {
@@ -231,7 +230,7 @@ const slice = createSlice({
             }
 
             return {
-              id: this_conversation._id._id,
+              id: this_conversation._id,
               group_id: el._id,
               name: this_conversation.name,
               //   name: `${user.firstName} ${user.lastName}`,
