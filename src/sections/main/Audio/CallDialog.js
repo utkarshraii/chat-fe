@@ -147,6 +147,7 @@ const AudioCallDialog = ({ open, handleClose }) => {
       this_token = response.data.token;
       // ...
     }
+
     fetchToken();
 
     // Step 2 => Check browser compatibility

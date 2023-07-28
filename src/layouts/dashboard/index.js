@@ -75,14 +75,14 @@ const DashboardLayout = () => {
     dispatch(UpdateVideoCallDialog({ state: false }));
   };
 
-  useEffect(() => {
-    window.addEventListener("beforeunload", () => {
-      socket.emit("disconnect_on_reload");
-    });
-    // socket.on('disconnect', () => {
-    //   console.log(`Disconnected: ${socket.id}`);
-    // });
-  }, []);
+  // useEffect(() => {
+  //   window.addEventListener("beforeunload", () => {
+  //     socket.emit("disconnect_on_reload");
+  //   });
+  //   // socket.on('disconnect', () => {
+  //   //   console.log(`Disconnected: ${socket.id}`);
+  //   // });
+  // }, []);
 
   useEffect(() => {
     if (isLoggedIn) {
@@ -140,6 +140,7 @@ const DashboardLayout = () => {
               message: message.text,
               incoming: message.to === user_id,
               outgoing: message.from === user_id,
+              // unreadCount: data.unreadCount,
             })
           );
         }
@@ -221,7 +222,13 @@ const DashboardLayout = () => {
 
       socket?.off("audio_call_notification");
     };
-  }, [isLoggedIn, current_conversation, group_current_conversation, chat_type]);
+  }, [
+    isLoggedIn,
+    current_conversation,
+    group_current_conversation,
+    chat_type,
+    socket,
+  ]);
   // }, [isLoggedIn, chat_type, socket]);
 
   if (!isLoggedIn) {
