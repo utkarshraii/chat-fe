@@ -83,10 +83,10 @@ const Call = () => {
               </IconButton>
             </Stack>
             <Divider />
-            <Stack
-              className="scrollHide"
-              sx={{ flexGrow: 1, overflowY: "scroll", height: "100%" }}
-            >
+            // <Stack
+            //   className="scrollHide"
+            //   sx={{ flexGrow: 1, overflowY: "scroll", height: "100%" }}
+            // >
               // <SimpleBarStyle timeout={500} clickOnTrack={false}>
               //   <Stack spacing={2.4}>
               //     {CallList.map((el, idx) => {
@@ -94,7 +94,7 @@ const Call = () => {
               //     })}
               //   </Stack>
               // </SimpleBarStyle>
-            </Stack>
+            // </Stack>
           </Stack>
         </Box>
       </Stack>
