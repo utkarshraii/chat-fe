@@ -87,13 +87,13 @@ const Call = () => {
               className="scrollHide"
               sx={{ flexGrow: 1, overflowY: "scroll", height: "100%" }}
             >
-              <SimpleBarStyle timeout={500} clickOnTrack={false}>
-                <Stack spacing={2.4}>
-                  {CallList.map((el, idx) => {
-                    return <CallLogElement key={idx} {...el} />;
-                  })}
-                </Stack>
-              </SimpleBarStyle>
+              // <SimpleBarStyle timeout={500} clickOnTrack={false}>
+              //   <Stack spacing={2.4}>
+              //     {CallList.map((el, idx) => {
+              //       return <CallLogElement key={idx} {...el} />;
+              //     })}
+              //   </Stack>
+              // </SimpleBarStyle>
             </Stack>
           </Stack>
         </Box>
