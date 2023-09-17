@@ -17,27 +17,29 @@ import { socket } from "../../socket";
 import { toast } from "react-toastify";
 import { useDispatch, useSelector } from "react-redux";
 import { SelectGroupConversation } from "../../redux/slices/chat";
-import { FetchUsers } from "../../redux/slices/users";
-import { UserElement } from "../../components/UserElement";
+import { FetchFriends } from "../../redux/slices/users";
+import { FriendElement } from "../../components/UserElement";
 const user_id = window.localStorage.getItem("user_id");
-const UsersList = () => {
+
+const FriendsList = ({ handleClose }) => {
   const dispatch = useDispatch();
 
-  const { users } = useSelector((state) => state.users);
+  const { friends } = useSelector((state) => state.users);
 
   useEffect(() => {
-    dispatch(FetchUsers());
+    dispatch(FetchFriends());
   }, []);
 
   return (
     <>
-      {users.map((el, idx) => {
-        return <UserElement key={idx} {...el} />;
+      {friends?.map((el, idx) => {
+        return <FriendElement key={idx} {...el} handleClose={handleClose} />;
       })}
     </>
   );
 };
-const MEMBERS = ["Dubem", "Luke", UsersList];
+
+const MEMBERS = [FriendsList];
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
