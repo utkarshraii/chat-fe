@@ -39,7 +39,7 @@ const FriendsList = ({ handleClose }) => {
   );
 };
 
-const MEMBERS = FriendsList;
+const MEMBERS = [FriendsList];
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
@@ -100,8 +100,8 @@ const CreateFormGroup = ({ handleClose }) => {
           label="members"
           multiple
           freeSolo
-          options={MEMBERS.map((option) => option)}
-          ChipProps={{ sise: "medium" }}
+          options={FriendsList.map((option) => option)}
+          ChipProps={{ size: "medium" }}
         />
 
         <Stack
