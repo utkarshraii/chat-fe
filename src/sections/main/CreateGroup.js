@@ -17,10 +17,10 @@ import { socket } from "../../socket";
 import { toast } from "react-toastify";
 import { useDispatch } from "react-redux";
 import { SelectGroupConversation } from "../../redux/slices/chat";
-
+import { FetchUsers } from "../../redux/slices/users";
 const user_id = window.localStorage.getItem("user_id");
 
-const MEMBERS = ["Dubem", "Luke"];
+const MEMBERS = ["Dubem", "Luke", dispatch(FetchUsers)];
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
