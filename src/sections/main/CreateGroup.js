@@ -19,8 +19,24 @@ import { useDispatch } from "react-redux";
 import { SelectGroupConversation } from "../../redux/slices/chat";
 import { FetchUsers } from "../../redux/slices/users";
 const user_id = window.localStorage.getItem("user_id");
+const UsersList = () => {
+  const dispatch = useDispatch();
 
-const MEMBERS = ["Dubem", "Luke", dispatch(FetchUsers)];
+  const { users } = useSelector((state) => state.users);
+
+  useEffect(() => {
+    dispatch(FetchUsers());
+  }, []);
+
+  return (
+    <>
+      {users.map((el, idx) => {
+        return <UserElement key={idx} {...el} />;
+      })}
+    </>
+  );
+};
+const MEMBERS = ["Dubem", "Luke", UsersList];
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
