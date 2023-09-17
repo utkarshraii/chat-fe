@@ -20,19 +20,26 @@ import { SelectGroupConversation } from "../../redux/slices/chat";
 import { FetchFriends } from "../../redux/slices/users";
 import { FriendElement } from "../../components/UserElement";
 const user_id = window.localStorage.getItem("user_id");
-const dispatch = useDispatch();
 
-const { friends } = useSelector((state) => state.users);
+const FriendsList = ({ handleClose }) => {
+  const dispatch = useDispatch();
 
-useEffect(() => {
-  dispatch(FetchFriends());
-}, []);
+  const { friends } = useSelector((state) => state.users);
 
-const MEMBERS = [
-  friends?.map((el, idx) => {
-    return <FriendElement key={idx} {...el} handleClose={handleClose} />;
-  }),
-];
+  useEffect(() => {
+    dispatch(FetchFriends());
+  }, []);
+
+  return (
+    <>
+      {friends?.map((el, idx) => {
+        return <FriendElement key={idx} {...el} handleClose={handleClose} />;
+      })}
+    </>
+  );
+};
+
+const MEMBERS = [FriendsList];
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
@@ -93,7 +100,7 @@ const CreateFormGroup = ({ handleClose }) => {
           label="members"
           multiple
           freeSolo
-          options={members.map((option) => option)}
+          options={MEMBERS.map((option) => option)}
           ChipProps={{ size: "medium" }}
         />
 
