@@ -100,7 +100,7 @@ const CreateFormGroup = ({ handleClose }) => {
           label="members"
           multiple
           freeSolo
-          options={FriendsList.map((option) => option)}
+          options={FriendsList}
           ChipProps={{ size: "medium" }}
         />
 
