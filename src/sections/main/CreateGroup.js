@@ -39,7 +39,7 @@ const FriendsList = ({ handleClose }) => {
   );
 };
 
-const MEMBERS = [FriendsList];
+const MEMBERS = friends;
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
