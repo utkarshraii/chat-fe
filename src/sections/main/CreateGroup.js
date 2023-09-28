@@ -21,23 +21,11 @@ import { FetchFriends } from "../../redux/slices/users";
 import { FriendElement } from "../../components/UserElement";
 const user_id = window.localStorage.getItem("user_id");
 
-const FriendsList = ({ handleClose }) => {
-  const dispatch = useDispatch();
+const { friends } = useSelector((state) => state.users);
 
-  const { friends } = useSelector((state) => state.users);
-
-  useEffect(() => {
-    dispatch(FetchFriends());
-  }, []);
-
-  return (
-    <>
-      {friends?.map((el, idx) => {
-        return <FriendElement key={idx} {...el} handleClose={handleClose} />;
-      })}
-    </>
-  );
-};
+useEffect(() => {
+  dispatch(FetchFriends());
+}, []);
 
 const MEMBERS = friends;
 
