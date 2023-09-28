@@ -20,14 +20,24 @@ import { SelectGroupConversation } from "../../redux/slices/chat";
 import { FetchFriends } from "../../redux/slices/users";
 import { FriendElement } from "../../components/UserElement";
 const user_id = window.localStorage.getItem("user_id");
+let MEMBERS;
+const FriendsList = ({ handleClose }) => {
+  const dispatch = useDispatch();
 
-const { friends } = useSelector((state) => state.users);
+  const { friends } = useSelector((state) => state.users);
 
-useEffect(() => {
-  dispatch(FetchFriends());
-}, []);
-
-const MEMBERS = friends;
+  useEffect(() => {
+    dispatch(FetchFriends());
+  }, []);
+  MEMBERS = friends;
+  return (
+    <>
+      {friends?.map((el, idx) => {
+        return <FriendElement key={idx} {...el} handleClose={handleClose} />;
+      })}
+    </>
+  );
+};
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
